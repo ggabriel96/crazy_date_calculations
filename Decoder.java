@@ -56,9 +56,7 @@ class Decoder {
             case 0: return this.seconds(d);
             case 1: return this.minutes(d);
             case 2: return this.hours(d);
-            case 3: // dias
-                //return this.days(d);
-                break;
+            case 3: return this.days(d);
             case 4: // semanas
                 //return this.weeks(d);
                 break;
@@ -118,5 +116,17 @@ class Decoder {
         h += d.min / 60.0;
         h += d.sec / 3600.0;
         return h;
+    }
+
+    private double days(Date d) {
+        double b = 0.0;
+        b += d.yr * 365;
+        b += d.mon * 30;
+        b += d.week * 7;
+        b += d.day;
+        b += d.hour / 24.0;
+        b += d.min / 1440.0;
+        b += d.sec / 86400.0;
+        return b;
     }
 }
