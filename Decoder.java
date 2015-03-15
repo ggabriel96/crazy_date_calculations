@@ -1,10 +1,23 @@
 class Decoder {
 
-    private static String[] options = {"segundo", "minuto", "hora", "dia", "semana", "mes", "ano"};
+    private static String[] options =
+    {"segundo", "minuto", "hora", "dia", "semana", "mes", "ano"};
 
     private static boolean equiv(String r, String s) {
         int len = Math.min(r.length(), s.length());
         return r.regionMatches(true, 0, s, 0, len);
+    }
+
+    public int answer(String s) {
+        String[] query = s.split(" ");
+        int op = this.select(query);
+        Date d = this.detect(query);
+        double answ = this.convert(op, d);
+
+        System.out.println("op: " + op + " | date: " + d);
+        System.out.println("Answer: " + answ);
+
+        return 0;
     }
 
     // selects what conversion the decoder should do
@@ -71,18 +84,6 @@ class Decoder {
             case 5: return this.months(d);
             case 6: return this.years(d);
         }
-        return 0;
-    }
-
-    public int answer(String s) {
-        String[] query = s.split(" ");
-        int op = this.select(query);
-        Date d = this.detect(query);
-        double answ = this.convert(op, d);
-
-        System.out.println("op: " + op + " | date: " + d);
-        System.out.println("Answer: " + answ);
-
         return 0;
     }
 
