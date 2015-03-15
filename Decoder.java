@@ -58,9 +58,7 @@ class Decoder {
             case 2: return this.hours(d);
             case 3: return this.days(d);
             case 4: return this.weeks(d);
-            case 5: // meses
-                //return this.months(d);
-                break;
+            case 5: return this.months(d);
             case 6: // anos
                 //return this.years(d);
                 break;
@@ -138,5 +136,17 @@ class Decoder {
         w += d.min / 60.0 / 24.0 / 7.0;
         w += d.sec / 60.0 / 60.0 / 24.0 / 7.0;
         return w;
+    }
+
+    private double months(Date d) {
+        double m = 0.0;
+        m += d.yr * 12;
+        m += d.mon;
+        m += d.week / 4.0;
+        m += d.day / 30.0;
+        m += d.hour / 24.0 / 30.0;
+        m += d.min / 60.0 / 24.0 / 30.0;
+        m += d.sec / 60.0 / 60.0 / 24.0 / 30.0;
+        return m;
     }
 }
