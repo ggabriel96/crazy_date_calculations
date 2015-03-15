@@ -2,13 +2,18 @@ class Decoder {
 
     private static String[] options = {"segundo", "minuto", "hora", "dia", "semana", "mes", "ano"};
 
+    private static boolean equiv(String r, String s) {
+        int len = Math.min(r.length(), s.length());
+        return r.regionMatches(true, 0, s, 0, len);
+    }
+
     // selects what conversion the decoder should do
     private int select(String[] s) {
         int i;
         for (String subs: s) {
             i = 0;
             for (String op: options) {
-                if (subs.equalsIgnoreCase(op) || subs.contains(op)) {
+                if (Decoder.equiv(subs, op)) {
                     return i;
                 }
                 i++;
@@ -19,33 +24,37 @@ class Decoder {
 
     // detects from what to convert from
     private Date detect(String[] s) {
+        boolean first = true;
         Date d = new Date();
-        for (String op: options) {
-            for (int j = 3; j < s.length; j++) {
-                if (s[j].contains(op) && s[j - 1].matches("[0-9]+")) {
+        for (int i = 0; i < s.length; i++) {
+            for (String op: options) {
+                if (!first && Decoder.equiv(s[i], op) && s[i - 1].matches("[0-9]+")) {
                     switch (op) {
                         case "segundo":
-                            d.sec += Integer.parseInt(s[j - 1]);
+                            d.sec += Integer.parseInt(s[i - 1]);
                             break;
                         case "minuto":
-                            d.min += Integer.parseInt(s[j - 1]);
+                            d.min += Integer.parseInt(s[i - 1]);
                             break;
                         case "hora":
-                            d.hour += Integer.parseInt(s[j - 1]);
+                            d.hour += Integer.parseInt(s[i - 1]);
                             break;
                         case "dia":
-                            d.day += Integer.parseInt(s[j - 1]);
+                            d.day += Integer.parseInt(s[i - 1]);
                             break;
                         case "semana":
-                            d.week += Integer.parseInt(s[j - 1]);
+                            d.week += Integer.parseInt(s[i - 1]);
                             break;
                         case "mes":
-                            d.mon += Integer.parseInt(s[j - 1]);
+                            d.mon += Integer.parseInt(s[i - 1]);
                             break;
                         case "ano":
-                            d.yr += Integer.parseInt(s[j - 1]);
+                            d.yr += Integer.parseInt(s[i - 1]);
                             break;
                     }
+                }
+                else if (first && Decoder.equiv(s[i], op)) {
+                    first = false;
                 }
             }
         }

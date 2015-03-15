@@ -9,7 +9,7 @@ class Main {
         String query = new String();
         Decoder dec = new Decoder();
 
-        query = "meses em 8 semanas e 30 dias";
+        query = "meses 8 semanas e 30 dias";
         dec.answer(query);
     }
 }
