@@ -3,4 +3,4 @@ A little crazy program that takes a String with a query to convert come date inf
 
 This code assumes 365 days for a year and 30 days for a month.
 
-**This is experimental code**
+**This is experimental code.**

@@ -59,9 +59,7 @@ class Decoder {
             case 3: return this.days(d);
             case 4: return this.weeks(d);
             case 5: return this.months(d);
-            case 6: // anos
-                //return this.years(d);
-                break;
+            case 6: return this.years(d);
         }
         return 0;
     }
@@ -148,5 +146,17 @@ class Decoder {
         m += d.min / 60.0 / 24.0 / 30.0;
         m += d.sec / 60.0 / 60.0 / 24.0 / 30.0;
         return m;
+    }
+
+    private double years(Date d) {
+        double y = 0.0;
+        y += d.yr;
+        y += d.mon / 12.0;
+        y += d.week / 4.0 / 12.0;
+        y += d.day / 30.0 / 12.0;
+        y += d.hour / 24.0 / 30.0 / 12.0;
+        y += d.min / 60.0 / 24.0 / 30.0 / 12.0;
+        y += d.sec / 60.0 / 60.0 / 24.0 / 30.0 / 12.0;
+        return y;
     }
 }
