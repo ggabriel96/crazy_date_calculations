@@ -4,14 +4,15 @@ class Decoder {
 
     // selects what conversion the decoder should do
     private int select(String[] s) {
-        int i = 0;
-        for (String op: options) {
-            for (String subs: s) {
+        int i;
+        for (String subs: s) {
+            i = 0;
+            for (String op: options) {
                 if (subs.contains(op)) {
                     return i;
                 }
+                i++;
             }
-            i++;
         }
         return -1;
     }
