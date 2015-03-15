@@ -3,7 +3,7 @@ class Date {
     int day, week, mon, yr;
 
     public String toString() {
-        return (this.day + "/" + this.mon + "/" + this.yr + " - " + this.hour +
-        ":" + this.min + ":" + this.sec + ", week " + this.week);
+        return ("(" + this.week + "w) " + this.day + "/" + this.mon + "/" + this.yr +
+        " - " + this.hour + ":" + this.min + ":" + this.sec);
     }
 }
