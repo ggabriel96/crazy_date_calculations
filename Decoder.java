@@ -57,9 +57,7 @@ class Decoder {
             case 1: return this.minutes(d);
             case 2: return this.hours(d);
             case 3: return this.days(d);
-            case 4: // semanas
-                //return this.weeks(d);
-                break;
+            case 4: return this.weeks(d);
             case 5: // meses
                 //return this.months(d);
                 break;
@@ -114,7 +112,7 @@ class Decoder {
         h += d.day * 24;
         h += d.hour;
         h += d.min / 60.0;
-        h += d.sec / 3600.0;
+        h += d.sec / 60.0 / 60.0;
         return h;
     }
 
@@ -125,8 +123,20 @@ class Decoder {
         b += d.week * 7;
         b += d.day;
         b += d.hour / 24.0;
-        b += d.min / 1440.0;
-        b += d.sec / 86400.0;
+        b += d.min / 60.0 / 24.0;
+        b += d.sec / 60.0 / 60.0 / 24.0;
         return b;
+    }
+
+    private double weeks(Date d) {
+        double w = 0.0;
+        w += d.yr * 12 * 4;
+        w += d.mon * 4;
+        w += d.week;
+        w += d.day / 7.0;
+        w += d.hour / 24.0 / 7.0;
+        w += d.min / 60.0 / 24.0 / 7.0;
+        w += d.sec / 60.0 / 60.0 / 24.0 / 7.0;
+        return w;
     }
 }

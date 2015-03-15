@@ -9,7 +9,7 @@ class Main {
         String query = new String();
         Decoder dec = new Decoder();
 
-        query = "quants dias há em 1 ano e 3 meses?";
+        query = "quants semanas há em 1 ano e 3 meses?";
         dec.answer(query);
     }
 }
