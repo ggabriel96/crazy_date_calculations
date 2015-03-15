@@ -3,8 +3,9 @@ class Time {
     int day, week, mon, yr;
 
     public String toString() {
-        return ("(" + this.week + "w) " + this.day + "/" + this.mon + "/" + this.yr +
-        " - " + this.hour + ":" + this.min + ":" + this.sec);
+        return "{" + this.yr + "y, " + this.mon + "m, " + this.week + "w, " +
+        + this.day + "d, " + this.hour + "h, " + this.min + "m, " +
+        + this.sec + "s" + "}";
     }
 
     public int toSeconds() {

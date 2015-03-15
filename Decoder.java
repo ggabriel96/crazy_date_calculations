@@ -14,7 +14,7 @@ class Decoder {
         Time d = this.detect(query);
         double answ = this.convert(op, d);
 
-        //System.out.println("op: " + op + " | date: " + d);
+        //System.out.println("date: " + d);
         if (print) {
             System.out.print(answ);
             System.out.print(" " + options[op]);
