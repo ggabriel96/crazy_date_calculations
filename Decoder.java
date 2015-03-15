@@ -18,8 +18,11 @@ class Decoder {
         if (print) {
             System.out.print(answ);
             System.out.print(" " + options[op]);
-            if (op == 5) System.out.println("(es)");
-            else System.out.println("(s)");
+            if (Double.compare(answ, 1.0) != 0) {
+                if (op == 5) System.out.println("es");
+                else System.out.println("s");
+            }
+            else System.out.println();
         }
 
         return answ;
