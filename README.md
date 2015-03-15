@@ -5,7 +5,9 @@ Currently, the only kind of input that gets answered is of the pattern:
 
 `<x> [in] <period>`, e.g.: "quantos meses há em 8 semanas e 30 dias?".
 
-* `<x>` can be: segundos, minutos, horas, dias, semanas, meses, anos (case-insensitive, singular or plural);
+* `<x>` can be: segundos, minutos, horas, dias, semanas, meses, anos (case-insensitive, singular or plural¹);
 * `[in]` is optional. Means: existem em, há em, em, tem;
 * `<period>` can be things like: 10 anos, 20 meses, 2 semanas e 15 dias...;
 * All other text around it doesn't matter if it's not related to the core of the query or dates.
+
+¹ If you type something like: "1 mês em dias", it will not answer properly. Accents are not supported.
