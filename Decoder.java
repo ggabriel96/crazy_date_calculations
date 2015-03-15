@@ -8,7 +8,7 @@ class Decoder {
         for (String subs: s) {
             i = 0;
             for (String op: options) {
-                if (subs.contains(op)) {
+                if (subs.equalsIgnoreCase(op) || subs.contains(op)) {
                     return i;
                 }
                 i++;

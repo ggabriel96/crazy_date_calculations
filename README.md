@@ -3,8 +3,9 @@ A little crazy program that takes a String with a query to convert come date inf
 
 Currently, the only kind of input that gets answered is of the pattern:
 
-`[quantos, quantas...] <x> [há em, tem, ...] <period>`
+`<x> <in> <period>`
 
-* `<x>` can be: segundos, minutos, horas, dias, semanas, meses, anos (case-sensitive, but singular/plural doesn't matter);
-* Text between `[]` is optional;
-* `<period>` can be things like: 10 anos, 20 meses, 2 semanas e 15 dias...
+* `<x>` can be: segundos, minutos, horas, dias, semanas, meses, anos (case-insensitive, can be singular or plural);
+* `<in>` can be: há em, em, tem;
+* `<period>` can be things like: 10 anos, 20 meses, 2 semanas e 15 dias...;
+* All other text around it doesn't matter if it's not related to the core of the query or dates.
