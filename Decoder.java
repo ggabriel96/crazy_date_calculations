@@ -8,16 +8,21 @@ class Decoder {
         return r.regionMatches(true, 0, s, 0, len);
     }
 
-    public int answer(String s) {
+    public double answer(String s, boolean print) {
         String[] query = s.split(" ");
         int op = this.select(query);
         Date d = this.detect(query);
         double answ = this.convert(op, d);
 
-        System.out.println("op: " + op + " | date: " + d);
-        System.out.println("Answer: " + answ);
+        //System.out.println("op: " + op + " | date: " + d);
+        if (print) {
+            System.out.print(answ);
+            System.out.print(" " + options[op]);
+            if (op == 5) System.out.println("(es)");
+            else System.out.println("(s)");
+        }
 
-        return 0;
+        return answ;
     }
 
     // selects what conversion the decoder should do

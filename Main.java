@@ -10,6 +10,6 @@ class Main {
         Decoder dec = new Decoder();
 
         query = "meses 8 semanas e 30 dias";
-        dec.answer(query);
+        dec.answer(query, true);
     }
 }
