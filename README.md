@@ -1,5 +1,5 @@
 # crazy_date_calculations
-A little crazy program that takes a String with a query to convert come date info and tries to interpret and answer it (approximately). This code assumes 365 days for a year and 30 days for a month. **This is experimental code.**
+A little crazy program that takes a String with a query to convert some date info and tries to interpret and answer it (approximately). This code assumes 365 days for a year and 30 days for a month. **This is experimental code.**
 
 Currently, the only kind of input that gets answered is of the pattern:
 
