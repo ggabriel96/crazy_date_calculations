@@ -3,7 +3,7 @@ A little crazy program that takes a String with a query to convert come date inf
 
 Currently, the only kind of input that gets answered is of the pattern:
 
-`<x> <in> <period>`
+`<x> <in> <period>`, e.g.: "quantos meses há em 8 semanas e 30 dias?".
 
 * `<x>` can be: segundos, minutos, horas, dias, semanas, meses, anos (case-insensitive, can be singular or plural);
 * `<in>` can be: há em, em, tem;
