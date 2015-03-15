@@ -6,8 +6,8 @@ class Decoder {
     private int select(String[] s) {
         int i = 0;
         for (String op: options) {
-            for (int j = 0; j < 3; j++) {
-                if (s[j].contains(op)) {
+            for (String subs: s) {
+                if (subs.contains(op)) {
                     return i;
                 }
             }
