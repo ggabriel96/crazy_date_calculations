@@ -55,9 +55,7 @@ class Decoder {
         switch (op) {
             case 0: return this.seconds(d);
             case 1: return this.minutes(d);
-            case 2: // horas
-                //return this.hours(d);
-                break;
+            case 2: return this.hours(d);
             case 3: // dias
                 //return this.days(d);
                 break;
@@ -108,5 +106,17 @@ class Decoder {
         m += d.min;
         m += d.sec / 60.0;
         return m;
+    }
+
+    private double hours(Date d) {
+        double h = 0.0;
+        h += d.yr * 365 * 24;
+        h += d.mon * 30 * 24;
+        h += d.week * 7 * 24;
+        h += d.day * 24;
+        h += d.hour;
+        h += d.min / 60.0;
+        h += d.sec / 3600.0;
+        return h;
     }
 }
