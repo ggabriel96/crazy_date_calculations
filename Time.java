@@ -1,4 +1,4 @@
-class Date {
+class Time {
     int hour, min, sec;
     int day, week, mon, yr;
 

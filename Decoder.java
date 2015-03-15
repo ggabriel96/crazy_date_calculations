@@ -11,7 +11,7 @@ class Decoder {
     public double answer(String s, boolean print) {
         String[] query = s.split(" ");
         int op = this.select(query);
-        Date d = this.detect(query);
+        Time d = this.detect(query);
         double answ = this.convert(op, d);
 
         //System.out.println("op: " + op + " | date: " + d);
@@ -44,9 +44,9 @@ class Decoder {
     }
 
     // detects from what to convert from
-    private Date detect(String[] s) {
+    private Time detect(String[] s) {
         boolean first = true;
-        Date d = new Date();
+        Time d = new Time();
         for (int i = 0; i < s.length; i++) {
             for (String op: options) {
                 if (!first && Decoder.equiv(s[i], op) && s[i - 1].matches("[0-9]+")) {
@@ -82,7 +82,7 @@ class Decoder {
         return d;
     }
 
-    private double convert(int op, Date d) {
+    private double convert(int op, Time d) {
         switch (op) {
             case 0: return this.seconds(d);
             case 1: return this.minutes(d);
@@ -95,7 +95,7 @@ class Decoder {
         return 0;
     }
 
-    private int seconds(Date d) {
+    private int seconds(Time d) {
         int s = 0;
         s += d.yr * 365 * 24 * 60 * 60;
         s += d.mon * 30 * 24 * 60 * 60;
@@ -107,7 +107,7 @@ class Decoder {
         return s;
     }
 
-    private double minutes(Date d) {
+    private double minutes(Time d) {
         double m = 0.0;
         m += d.yr * 365 * 24 * 60;
         m += d.mon * 30 * 24 * 60;
@@ -119,7 +119,7 @@ class Decoder {
         return m;
     }
 
-    private double hours(Date d) {
+    private double hours(Time d) {
         double h = 0.0;
         h += d.yr * 365 * 24;
         h += d.mon * 30 * 24;
@@ -131,7 +131,7 @@ class Decoder {
         return h;
     }
 
-    private double days(Date d) {
+    private double days(Time d) {
         double b = 0.0;
         b += d.yr * 365;
         b += d.mon * 30;
@@ -143,7 +143,7 @@ class Decoder {
         return b;
     }
 
-    private double weeks(Date d) {
+    private double weeks(Time d) {
         double w = 0.0;
         w += d.yr * 12 * 4;
         w += d.mon * 4;
@@ -155,7 +155,7 @@ class Decoder {
         return w;
     }
 
-    private double months(Date d) {
+    private double months(Time d) {
         double m = 0.0;
         m += d.yr * 12;
         m += d.mon;
@@ -167,7 +167,7 @@ class Decoder {
         return m;
     }
 
-    private double years(Date d) {
+    private double years(Time d) {
         double y = 0.0;
         y += d.yr;
         y += d.mon / 12.0;
