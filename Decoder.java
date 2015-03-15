@@ -51,12 +51,10 @@ class Decoder {
         return d;
     }
 
-    private int convert(int op, Date d) {
+    private double convert(int op, Date d) {
         switch (op) {
             case 0: return this.seconds(d);
-            case 1: // minutos
-                //return this.minutes(d);
-                break;
+            case 1: return this.minutes(d);
             case 2: // horas
                 //return this.hours(d);
                 break;
@@ -80,7 +78,7 @@ class Decoder {
         String[] query = s.split(" ");
         int op = this.select(query);
         Date d = this.detect(query);
-        int answ = this.convert(op, d);
+        double answ = this.convert(op, d);
 
         System.out.println("op: " + op + " | date: " + d);
         System.out.println("Answer: " + answ);
@@ -98,5 +96,17 @@ class Decoder {
         s += d.min * 60;
         s += d.sec;
         return s;
+    }
+
+    private double minutes(Date d) {
+        double m = 0.0;
+        m += d.yr * 365 * 24 * 60;
+        m += d.mon * 30 * 24 * 60;
+        m += d.week * 7 * 24 * 60;
+        m += d.day * 24 * 60;
+        m += d.hour * 60;
+        m += d.min;
+        m += d.sec / 60.0;
+        return m;
     }
 }
