@@ -1,6 +1,6 @@
 class Decoder {
 
-    static String[] options = {"segundo", "minuto", "hora", "dia", "semana", "mes", "ano"};
+    private static String[] options = {"segundo", "minuto", "hora", "dia", "semana", "mes", "ano"};
 
     // selects what conversion the decoder should do
     private int select(String[] s) {
@@ -24,7 +24,7 @@ class Decoder {
                 if (s[j].contains(op) && s[j - 1].matches("[0-9]+")) {
                     switch (op) {
                         case "segundo":
-                            d.seg += Integer.parseInt(s[j - 1]);
+                            d.sec += Integer.parseInt(s[j - 1]);
                             break;
                         case "minuto":
                             d.min += Integer.parseInt(s[j - 1]);
@@ -51,13 +51,52 @@ class Decoder {
         return d;
     }
 
+    private int convert(int op, Date d) {
+        switch (op) {
+            case 0: return this.seconds(d);
+            case 1: // minutos
+                //return this.minutes(d);
+                break;
+            case 2: // horas
+                //return this.hours(d);
+                break;
+            case 3: // dias
+                //return this.days(d);
+                break;
+            case 4: // semanas
+                //return this.weeks(d);
+                break;
+            case 5: // meses
+                //return this.months(d);
+                break;
+            case 6: // anos
+                //return this.years(d);
+                break;
+        }
+        return 0;
+    }
+
     public int answer(String s) {
         String[] query = s.split(" ");
         int op = this.select(query);
         Date d = this.detect(query);
+        int answ = this.convert(op, d);
 
-        System.out.println(op + " " + d);
+        System.out.println("op: " + op + " | date: " + d);
+        System.out.println("Answer: " + answ);
 
         return 0;
+    }
+
+    private int seconds(Date d) {
+        int s = 0;
+        s += d.yr * 365 * 24 * 60 * 60;
+        s += d.mon * 30 * 24 * 60 * 60;
+        s += d.week * 7 * 24 * 60 * 60;
+        s += d.day * 24 * 60 * 60;
+        s += d.hour * 60 * 60;
+        s += d.min * 60;
+        s += d.sec;
+        return s;
     }
 }
