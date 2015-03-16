@@ -1,6 +1,6 @@
 class Time {
-    int hour, min, sec;
-    int day, week, mon, yr;
+    double hour, min, sec;
+    double day, week, mon, yr;
 
     public String toString() {
         return "{" + this.yr + "y, " + this.mon + "m, " + this.week + "w, " +
