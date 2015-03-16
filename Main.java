@@ -16,7 +16,7 @@ class Main {
         System.out.println("Type 'exit' or 'quit' to terminate the program.");
 
         while (!exit) {
-            System.out.print("> ");
+            System.out.print("\n> ");
             query = s.nextLine();
             if (query.equalsIgnoreCase("exit") || query.equalsIgnoreCase("quit")) {
                 exit = true;

@@ -4,8 +4,7 @@ class Decoder {
     {"segundo", "minuto", "hora", "dia", "semana", "mes", "ano"};
 
     private static boolean equiv(String r, String s) {
-        int len = Math.min(r.length(), s.length());
-        return r.regionMatches(true, 0, s, 0, len);
+        return r.regionMatches(true, 0, s, 0, s.length());
     }
 
     public double answer(String s, boolean print) {
