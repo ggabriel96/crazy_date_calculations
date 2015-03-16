@@ -4,12 +4,25 @@
  * 1 ano e 3 meses? ou 23:14:30:59...
  */
 
+import java.util.Scanner;
+
 class Main {
     public static void main(String[] args) {
-        String query = new String();
+        boolean exit = false;
+        Scanner s = new Scanner(System.in);
         Decoder dec = new Decoder();
+        String query;
 
-        query = "quantos meses há em 6.5 semanas?";
-        dec.answer(query, true);
+        System.out.println("Type 'exit' or 'quit' to terminate the program.");
+
+        while (!exit) {
+            System.out.print("> ");
+            query = s.nextLine();
+            if (query.equalsIgnoreCase("exit") || query.equalsIgnoreCase("quit")) {
+                exit = true;
+            }
+            else dec.answer(query, true);
+        }
+        s.close();
     }
 }

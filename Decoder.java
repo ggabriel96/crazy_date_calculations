@@ -14,8 +14,8 @@ class Decoder {
         Time d = this.detect(query);
         double answ = this.convert(op, d);
 
-        System.out.println("date: " + d + ", op: " + op);
-        if (print) {
+        //System.out.println("date: " + d + ", op: " + op);
+        if (op >= 0 && print) {
             System.out.print(answ);
             System.out.print(" " + options[op]);
             if (Double.compare(answ, 1.0) != 0) {
@@ -23,6 +23,9 @@ class Decoder {
                 else System.out.println("s");
             }
             else System.out.println();
+        }
+        else if (print) {
+            System.out.println("# Invalid input.");
         }
 
         return answ;
