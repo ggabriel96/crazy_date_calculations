@@ -85,7 +85,7 @@ class Time {
         y += this.yr;
         y += this.mon / 12.0;
         y += this.week / 4.0 / 12.0;
-        y += this.day / 30.0 / 12.0;
+        y += this.day / 365.0;
         y += this.hour / 24.0 / 30.0 / 12.0;
         y += this.min / 60.0 / 24.0 / 30.0 / 12.0;
         y += this.sec / 60.0 / 60.0 / 24.0 / 30.0 / 12.0;

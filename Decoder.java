@@ -13,7 +13,7 @@ class Decoder {
         Time d = this.detect(query);
         double answ = this.convert(op, d);
 
-        //System.out.println("date: " + d + ", op: " + op);
+        System.out.println("date: " + d + ", op: " + op);
         if (op >= 0 && print) {
             System.out.print(answ);
             System.out.print(" " + options[op]);
@@ -39,7 +39,7 @@ class Decoder {
                 if (Decoder.equiv(subs, op)) {
                     return i;
                 }
-                i++;
+                else i++;
             }
         }
         return -1;
