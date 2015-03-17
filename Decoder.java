@@ -1,6 +1,6 @@
 class Decoder {
 
-    private static String[] options =
+    private static final String[] options =
     {"segundo", "minuto", "hora", "dia", "semana", "mes", "ano"};
 
     private static boolean equiv(String r, String s) {
