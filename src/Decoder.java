@@ -16,6 +16,8 @@
  */
 
 class Decoder {
+    private Time d;
+    private int op;
 
     private static final String[] options =
     {"segundo", "minuto", "hora", "dia", "semana", "mes", "ano"};
@@ -26,8 +28,8 @@ class Decoder {
 
     public double answer(String s, boolean print) {
         String[] query = s.split(" ");
-        int op = this.select(query);
-        Time d = this.detect(query);
+        d = this.detect(query);
+        op = this.select(query);
         double answ = this.convert(op, d);
 
         System.out.println("date: " + d + ", op: " + op);
@@ -45,21 +47,6 @@ class Decoder {
         }
 
         return answ;
-    }
-
-    // selects what conversion the decoder should do
-    private int select(String[] s) {
-        int i;
-        for (String subs: s) {
-            i = 0;
-            for (String op: options) {
-                if (Decoder.equiv(subs, op)) {
-                    return i;
-                }
-                else i++;
-            }
-        }
-        return -1;
     }
 
     // detects from what to convert from
@@ -93,12 +80,29 @@ class Decoder {
                             break;
                     }
                 }
-                else if (first && Decoder.equiv(s[i], op)) {
+                else if (first) {
                     first = false;
                 }
             }
         }
         return d;
+    }
+
+    // selects what conversion the decoder should do
+    private int select(String[] s) {
+        int i;
+        boolean first = true;
+        for (int j = 0; j < s.length; j++) {
+            i = 0;
+            for (String op: options) {
+                if (!first && Decoder.equiv(s[j], op) && !s[j - 1].matches(fpRegex)) {
+                    return i;
+                }
+                else if (first) first = false;
+                else i++;
+            }
+        }
+        return -1;
     }
 
     private double convert(int op, Time d) {
