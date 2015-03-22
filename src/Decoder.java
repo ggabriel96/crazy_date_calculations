@@ -28,8 +28,8 @@ class Decoder {
 
     public double answer(String s, boolean print) {
         String[] query = s.split(" ");
-        d = this.detect(query);
-        op = this.select(query);
+        d = this.detectTime(query);
+        op = this.selectOp(query);
         double answ = this.convert(op, d);
 
         System.out.println("date: " + d + ", op: " + op);
@@ -50,7 +50,7 @@ class Decoder {
     }
 
     // detects from what to convert from
-    private Time detect(String[] s) {
+    private Time detectTime(String[] s) {
         boolean first = true;
         Time d = new Time();
         for (int i = 0; i < s.length; i++) {
@@ -89,7 +89,7 @@ class Decoder {
     }
 
     // selects what conversion the decoder should do
-    private int select(String[] s) {
+    private int selectOp(String[] s) {
         int i;
         boolean first = true;
         for (int j = 0; j < s.length; j++) {
