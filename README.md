@@ -3,9 +3,10 @@ A little crazy program that takes a String with a query to convert some time inf
 
 Currently, the only kind of input that gets answered is in Portuguese and follows the patterns:
 
-`<x> [in] <period>`, e.g.: "quantos meses há em 8 semanas e 30 dias?" ou "meses em 8 semanas e 30 dias".
+* `<x> [in] <period>`, e.g.: "quantos meses há em 8 semanas e 30 dias?" ou "meses em 8 semanas e 30 dias".
+* `<period> [in] <x>`, e.g.: "1 ano em dias".
 
-`<period> [in] <x>`, e.g.: "1 ano em dias".
+Where:
 
 * `<x>` can be: segundos, minutos, horas, dias, semanas, meses, anos (case-insensitive, singular or plural. Accents not supported);
 * `[in]` is optional. Means: existem em, há em, em, tem. Accents doesn't matter here;
