@@ -24,12 +24,15 @@ class Main {
         Decoder dec = new Decoder();
         String query;
 
-        System.out.println("Type 'exit' or 'quit' to terminate the program.");
+        System.out.println("Type 'exit', 'quit' or 'q' to terminate the program.");
 
         while (!exit) {
             System.out.print("\n> ");
             query = s.nextLine();
-            if (query.equalsIgnoreCase("exit") || query.equalsIgnoreCase("quit")) {
+            if (query.equalsIgnoreCase("exit") ||
+                query.equalsIgnoreCase("quit") ||
+                query.equalsIgnoreCase("q"))
+            {
                 exit = true;
             }
             else dec.answer(query, true);

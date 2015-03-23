@@ -22,7 +22,7 @@ class Decoder {
     private static final String[] options =
     {"segundo", "minuto", "hora", "dia", "semana", "mes", "ano"};
 
-    private static boolean equiv(String r, String s) {
+    private boolean equiv(String r, String s) {
         return r.regionMatches(true, 0, s, 0, s.length());
     }
 
@@ -55,7 +55,7 @@ class Decoder {
         Time d = new Time();
         for (int i = 0; i < s.length; i++) {
             for (String op: options) {
-                if (!first && Decoder.equiv(s[i], op) && s[i - 1].matches(fpRegex)) {
+                if (!first && this.equiv(s[i], op) && s[i - 1].matches(fpRegex)) {
                     switch (op) {
                         case "segundo":
                             d.sec += Double.parseDouble(s[i - 1]);
@@ -95,7 +95,7 @@ class Decoder {
         for (int j = 0; j < s.length; j++) {
             i = 0;
             for (String op: options) {
-                if (!first && Decoder.equiv(s[j], op) && !s[j - 1].matches(fpRegex)) {
+                if (!first && this.equiv(s[j], op) && !s[j - 1].matches(fpRegex)) {
                     return i;
                 }
                 else if (first) first = false;
