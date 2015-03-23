@@ -51,11 +51,10 @@ class Decoder {
 
     // detects from what to convert from
     private Time detectTime(String[] s) {
-        boolean first = true;
         Time d = new Time();
-        for (int i = 0; i < s.length; i++) {
+        for (int i = 1; i < s.length; i++) {
             for (String op: options) {
-                if (!first && this.equiv(s[i], op) && s[i - 1].matches(fpRegex)) {
+                if (this.equiv(s[i], op) && s[i - 1].matches(fpRegex)) {
                     switch (op) {
                         case "segundo":
                             d.sec += Double.parseDouble(s[i - 1]);
@@ -80,9 +79,6 @@ class Decoder {
                             break;
                     }
                 }
-                else if (first) {
-                    first = false;
-                }
             }
         }
         return d;
@@ -91,14 +87,15 @@ class Decoder {
     // selects what conversion the decoder should do
     private int selectOp(String[] s) {
         int i;
-        boolean first = true;
         for (int j = 0; j < s.length; j++) {
             i = 0;
             for (String op: options) {
-                if (!first && this.equiv(s[j], op) && !s[j - 1].matches(fpRegex)) {
+                if (j == 0 && this.equiv(s[j], op)) {
                     return i;
                 }
-                else if (first) first = false;
+                else if (j > 0 && this.equiv(s[j], op) && !s[j - 1].matches(fpRegex)) {
+                    return i;
+                }
                 else i++;
             }
         }
